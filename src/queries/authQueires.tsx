@@ -7,7 +7,7 @@ import type {
   UserRequest,
   UserResponse,
 } from "@/types/auth.type";
-import { getProfile, login, logout } from "@/api/authService";
+import { getProfile, login, logout, register } from "@/api/authService";
 import { useAuthStore } from "@/store/authStore";
 
 export const useLogin = () => {
@@ -19,6 +19,16 @@ export const useLogin = () => {
     },
   });
 };
+
+export const useRegister = () => {
+  return useMutation<LoginResponse, AxiosError, UserRequest>({
+    mutationFn: register,
+    onSuccess: (data) => {
+      const { token } = data;
+      localStorage.setItem("token", token);
+    },
+  });
+}
 
 export const useLogout = () => {
   const setUser = useAuthStore((s) => s.setUser);

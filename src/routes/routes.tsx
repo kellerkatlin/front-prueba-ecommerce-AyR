@@ -1,6 +1,7 @@
 import AuthLayout from "@/layouts/AuthLayout";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import LoginPage from "@/pages/auth/Login";
+import RegisterPage from "@/pages/auth/Register";
 import CategoryPage from "@/pages/dashboard/CategoryPage";
 import PricePage from "@/pages/dashboard/PricePage";
 import ProductPage from "@/pages/dashboard/ProductPage";
@@ -20,6 +21,7 @@ export default function RootRouter() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Route>
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<Outlet />}>
